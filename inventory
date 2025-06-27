@@ -3,5 +3,5 @@ localhost ansible_connection=local
 
 [servers]
 # Add your servers here
-rocky9 ansible_host=192.168.56.174 ansible_user=root
+rocky9 ansible_host=192.168.56.174 ansible_user=root ansible_password=oyuksel
 # server2 ansible_host=192.168.1.11 ansible_user=ubuntu
