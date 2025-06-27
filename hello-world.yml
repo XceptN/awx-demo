@@ -1,0 +1,19 @@
+---
+- name: Hello World Playbook
+  hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Print hello message
+      debug:
+        msg: "Hello from AWX! Current time is {{ ansible_date_time.iso8601 }}"
+      
+    - name: Create a test file
+      file:
+        path: /tmp/awx-test.txt
+        state: touch
+        mode: '0644'
+      
+    - name: Write to test file
+      lineinfile:
+        path: /tmp/awx-test.txt
+        line: "AWX playbook executed successfully at {{ ansible_date_time.iso8601 }}"
