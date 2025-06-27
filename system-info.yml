@@ -1,0 +1,20 @@
+---
+- name: System Information Playbook
+  hosts: all
+  gather_facts: yes
+  tasks:
+    - name: Display system information
+      debug:
+        msg: |
+          Hostname: {{ ansible_hostname }}
+          OS: {{ ansible_distribution }} {{ ansible_distribution_version }}
+          Architecture: {{ ansible_architecture }}
+          Memory: {{ ansible_memtotal_mb }} MB
+          
+    - name: Check disk usage
+      shell: df -h /
+      register: disk_usage
+      
+    - name: Display disk usage
+      debug:
+        msg: "Disk usage: {{ disk_usage.stdout }}"
